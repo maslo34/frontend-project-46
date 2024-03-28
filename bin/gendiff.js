@@ -8,4 +8,9 @@ program
     .description('Compares two configuration files and shows a difference.')
     .helpOption('-h, --help', 'output usage information');
 
+program
+    .argument('<filepath1> <filepath2>')
+    .option('-f, --format [type]', 'output format')
+
+
 program.parse()
