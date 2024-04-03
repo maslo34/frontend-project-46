@@ -14,11 +14,11 @@ const compareFiles = (obj1, obj2) => {
     if (_.has(obj1, el) && _.has(obj2, el) && obj1[el] === obj2[el]) {
       acc += `  ${el}: ${obj2[el]}\r\n`;
     }
-    if (_.has(obj2, el) && obj1[el] !== obj2[el]) {
-      acc += `- ${el}: ${obj2[el]}\r\n`;
-    }
     if (_.has(obj1, el) && obj1[el] !== obj2[el]) {
-      acc += `+ ${el}: ${obj1[el]}\r\n`;
+      acc += `- ${el}: ${obj1[el]}\r\n`;
+    }
+    if (_.has(obj2, el) && obj1[el] !== obj2[el]) {
+      acc += `+ ${el}: ${obj2[el]}\r\n`;
     }
     return acc;
   }, '');
