@@ -6,9 +6,9 @@
     "gendiff": "bin/gendiff.js"
   },
   "description": "[![Actions Status](https://github.com/maslo34/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/maslo34/frontend-project-46/actions)",
-  "main": "bin/gendiff.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",

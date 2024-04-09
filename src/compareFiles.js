@@ -8,21 +8,31 @@ const getUnicKeys = (obj1, obj2) => {
   return sortedKeys;
 };
 
-const compareFiles = (obj1, obj2) => {
-  const unicKeysObjs = getUnicKeys(obj1, obj2);
-  const result = unicKeysObjs.reduce((acc, el) => {
-    if (_.has(obj1, el) && _.has(obj2, el) && obj1[el] === obj2[el]) {
-      acc += `  ${el}: ${obj2[el]}\r\n`;
+const compareFiles = (data1, data2) => {
+  const keys = getUnicKeys(data1, data2);
+  const condition = keys.map((key) => {
+    const value1 = data1[key];
+    const value2 = data2[key];
+    if (_.has(data1, key) && !_.has(data2, key)) {
+      return { key, value1, status: 'deleted' };
     }
-    if (_.has(obj1, el) && obj1[el] !== obj2[el]) {
-      acc += `- ${el}: ${obj1[el]}\r\n`;
+    if (!_.has(data1, key) && _.has(data2, key)) {
+      return { key, value2, status: 'added' };
     }
-    if (_.has(obj2, el) && obj1[el] !== obj2[el]) {
-      acc += `+ ${el}: ${obj2[el]}\r\n`;
+    if (_.isObject(value1) && _.isObject(value2)) {
+      return { key, children: compareFiles(value1, value2), status: 'object' };
     }
-    return acc;
-  }, '');
-  return result;
+    if (_.isEqual(value1, value2)) {
+      return { key, value1, status: 'unchanged' };
+    }
+    return {
+      key,
+      value1,
+      value2,
+      status: 'changed',
+    };
+  });
+  return condition;
 };
 
 export { getUnicKeys };

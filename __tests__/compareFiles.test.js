@@ -27,6 +27,17 @@ test('test getUnicKeys', () => {
 });
 
 test('test compareFiles', () => {
-  expect(compareFiles(obj3, obj4)).toEqual('');
-  expect(compareFiles(obj1, obj2)).toEqual('- follow: false\r\n  host: hexlet.io\r\n- proxy: 123.234.53.22\r\n- timeout: 50\r\n+ timeout: 20\r\n+ verbose: true\r\n');
+  expect(compareFiles(obj3, obj4)).toEqual([]);
+  expect(compareFiles(obj1, obj2)).toEqual([
+    { key: 'follow', value1: false, status: 'deleted' },
+    { key: 'host', value1: 'hexlet.io', status: 'unchanged' },
+    { key: 'proxy', value1: '123.234.53.22', status: 'deleted' },
+    {
+      key: 'timeout',
+      value1: 50,
+      value2: 20,
+      status: 'changed',
+    },
+    { key: 'verbose', value2: true, status: 'added' },
+  ]);
 });

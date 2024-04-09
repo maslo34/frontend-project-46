@@ -1,5 +1,6 @@
 import { getFileData, getFilePath, formatFile } from './parser.js';
 import compareFiles from './compareFiles.js';
+import getStylish from './formatters/stylish.js';
 
 const gendiff = (file1, file2) => {
   const filepath1 = getFilePath(file1);
@@ -8,7 +9,8 @@ const gendiff = (file1, file2) => {
   const formatFile2 = formatFile(file2);
   const obj1 = getFileData(filepath1, formatfile1);
   const obj2 = getFileData(filepath2, formatFile2);
-  return compareFiles(obj1, obj2);
+  const result = compareFiles(obj1, obj2);
+  return getStylish(result);
 };
 
 export default gendiff;
