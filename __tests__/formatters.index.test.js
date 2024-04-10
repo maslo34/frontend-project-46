@@ -18,3 +18,8 @@ test('test format plain.js', () => {
   const result = readFile('resultPlain.txt');
   expect(gendiff('__fixtures__/file3.json', '__fixtures__/file4.json', 'plain')).toBe(result);
 });
+
+test('test format plain.js', () => {
+  const result = readFile('resultJson.txt');
+  expect(gendiff('__fixtures__/file3.json', '__fixtures__/file4.json', 'json')).toBe(result);
+});
