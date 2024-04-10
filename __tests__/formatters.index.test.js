@@ -9,17 +9,17 @@ const __dirname = dirname(__filename);
 const getFilePath = (filepath) => path.join(__dirname, '..', '__fixtures__', filepath);
 const readFile = (filepath) => readFileSync(getFilePath(filepath), 'utf-8');
 
-test('test format stylish.js', () => {
+test('format1 stylish.js', () => {
   const result = readFile('resultStylish.txt');
   expect(gendiff('__fixtures__/file3.json', '__fixtures__/file4.json')).toBe(result);
 });
 
-test('test format plain.js', () => {
+test('format2 plain.js', () => {
   const result = readFile('resultPlain.txt');
   expect(gendiff('__fixtures__/file3.json', '__fixtures__/file4.json', 'plain')).toBe(result);
 });
 
-test('test format plain.js', () => {
+test('format3 json.js', () => {
   const result = readFile('resultJson.txt');
   expect(gendiff('__fixtures__/file3.json', '__fixtures__/file4.json', 'json')).toBe(result);
 });

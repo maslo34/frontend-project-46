@@ -15,7 +15,7 @@ const obj2 = {
 const obj3 = {};
 const obj4 = {};
 
-test('test getUnicKeys', () => {
+test('getUnicKeys', () => {
   expect(getUnicKeys(obj1, obj2)).toEqual([
     'follow',
     'host',
@@ -26,7 +26,7 @@ test('test getUnicKeys', () => {
   expect(getUnicKeys(obj3, obj4)).toEqual([]);
 });
 
-test('test compareFiles', () => {
+test('compareFiles', () => {
   expect(compareFiles(obj3, obj4)).toEqual([]);
   expect(compareFiles(obj1, obj2)).toEqual([
     { key: 'follow', value1: false, status: 'deleted' },

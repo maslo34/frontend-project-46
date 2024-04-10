@@ -1,6 +1,6 @@
 import gendiff from '../src';
 
-test('test compareFiles', () => {
+test('compareFiles', () => {
   expect(gendiff('__fixtures__/file1.json', '__fixtures__/file2.json')).toEqual(`{
   - follow: false
     host: hexlet.io

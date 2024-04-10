@@ -3,15 +3,15 @@ import { getFileData, getFilePath, formatFile } from '../src/parser.js';
 
 const __filename = fileURLToPath(import.meta.url);
 
-test('test formatFile', () => {
+test('formatFile', () => {
   expect(formatFile('index.js')).toBe('.js');
 });
 
-test('test getFilePath', () => {
+test('getFilePath', () => {
   expect(getFilePath('__tests__/parser.test.js')).toBe(__filename);
 });
 
-test('test getFileData', () => {
+test('getFileData', () => {
   expect(getFileData('__fixtures__/file1.yml', '.yml')).toEqual({
     follow: false,
     host: 'hexlet.io',
