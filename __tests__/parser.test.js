@@ -1,15 +1,4 @@
-import { fileURLToPath } from 'url';
-import { getFileData, getFilePath, formatFile } from '../src/parser.js';
-
-const __filename = fileURLToPath(import.meta.url);
-
-test('formatFile', () => {
-  expect(formatFile('index.js')).toBe('.js');
-});
-
-test('getFilePath', () => {
-  expect(getFilePath('__tests__/parser.test.js')).toBe(__filename);
-});
+import getFileData from '../src/parser.js';
 
 test('getFileData', () => {
   expect(getFileData('__fixtures__/file1.yml', '.yml')).toEqual({

@@ -1,10 +1,5 @@
-import { readFileSync } from 'node:fs';
 import yaml from 'js-yaml';
-import path from 'node:path';
-
-const getFilePath = (file) => path.resolve(process.cwd(), file);
-const formatFile = (file) => path.extname(file);
-const readFile = (file) => readFileSync(getFilePath(file), 'utf8');
+import { readFile } from './utils.js';
 
 const getFileData = (file, format) => {
   if (format === '.yaml' || format === '.yml') {
@@ -16,9 +11,4 @@ const getFileData = (file, format) => {
   throw new Error(`Неизвестный формат ${format}!`);
 };
 
-export {
-  getFileData,
-  getFilePath,
-  formatFile,
-  readFile,
-};
+export default getFileData;

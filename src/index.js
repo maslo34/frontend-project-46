@@ -1,4 +1,5 @@
-import { getFileData, getFilePath, formatFile } from './parser.js';
+import getFileData from './parser.js';
+import { getFilePath, formatFile } from './utils.js';
 import compareFiles from './compareFiles.js';
 import getFormat from './formatters/index.js';
 
